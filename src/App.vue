@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <!-- emit header -->
+    <!-- emit header  con funzione startSearch-->
     <Header 
     @startSearch="startSearch"
     />
+    <!-- in assenza di risultati  -->
     <h3 v-if="results.movie.length === 0 && results.tv.length === 0 ">
       nessun risultato trovato
     </h3>
-    
+    <!-- 2 componenti movie e tv  -->
+    <!-- passo 2 props: tipo dato e elenco risultati -->
     <Main v-if="results.movie.length > 0" type="movie" :list="results.movie" />
     <Main v-if="results.tv.length > 0" type="tv" :list="results.tv" />
 
