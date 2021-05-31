@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-
+    <!-- emit header -->
     <Header 
     @startSearch="startSearch"
     />
-
+    <h3 v-if="results.movie.length === 0 && results.tv.length === 0 ">
+      nessun risultato trovato
+    </h3>
+    
     <Main v-if="results.movie.length > 0" type="movie" :list="results.movie" />
     <Main v-if="results.tv.length > 0" type="tv" :list="results.tv" />
 
@@ -32,6 +35,7 @@ export default {
     return{
         apiUrl: 'https://api.themoviedb.org/3/search/',
         apiKey: '1b3eb153fce73eb6b953f7d515b2dc1d',
+        //nel mio oggetto memorizzo le due ricerche..
         results:{
           'movie':[],
           'tv':[],
@@ -41,11 +45,11 @@ export default {
   },
 
   methods:{
-
+    //lancio la ricerca
     startSearch(obj){
       //console.log(obj);
       this.resetResults();
-
+        //resetto le ricerche salvate e se cerca tutto fa le due chiamate 
       if(obj.type === 'all'){
         this.getAPI(obj.text, 'movie');
         this.getAPI(obj.text, 'tv');
@@ -56,10 +60,11 @@ export default {
     },
 
     resetResults(){
+      //memorizzo le ricerche in un array
       this.results.movie = [];
       this.results.tv = [];
     },
-
+    //getApi funzione chiamata axios
     getAPI(query, type){
 
       if(query !== ''){ //controllo della chiamata avviene solo se premo il pulsante
@@ -73,6 +78,8 @@ export default {
 
       })
       .then(res => {
+
+        // in base al tipo di ricerca salvo il dato nell'array dell'oggetto results 
         this.results[type] = res.data.results;
         console.log(res.data);
       })
