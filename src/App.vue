@@ -1,28 +1,91 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <Header 
+    @startSearch="startSearch"
+    />
+
+    <Main type="movie"/>
+    <Main type="tv"/>
+
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
+import Header from './components/Header.vue';
+import Main from './components/Main.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Header,
+    Main,
+  },
+
+  data(){
+    return{
+        apiUrl: 'https://api.themoviedb.org/3/search/',
+        apiKey: '1b3eb153fce73eb6b953f7d515b2dc1d',
+        results:{
+          'movie':[],
+          'tv':[],
+        }
+
+    }
+  },
+
+  methods:{
+
+    startSearch(obj){
+      //console.log(obj);
+      if(obj.type === 'all'){
+        this.getAPI(obj.text, 'movie');
+        this.getAPI(obj.text, 'tv');
+      }else{
+        this.getAPI(obj.text, obj.type)
+      }
+
+    },
+
+    getAPI(query, type){
+      axios.get(this.apiUrl+type,{
+        params:{
+          api_key: this.apiKey,
+          query: query,
+          language: 'it-IT'
+
+        }
+
+      })
+      .then(res => {
+        this.results[type] = res.data.results;
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    },
+  
+
+  },
+    created(){
+      
+    }
+
+
+  
+
+
+
+
+
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/styles/general';
+
+
 </style>
