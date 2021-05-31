@@ -39,7 +39,7 @@ export default {
 
   data(){
     return{
-      textToSearch: 'ritorno al futuro'
+      textToSearch: ''
     }
 
   }
@@ -51,7 +51,7 @@ export default {
     @import '../assets/styles/vars.scss';
 header{
   height: 100px;
-  background-color:rgb(78, 75, 75) ;
+  background-color:$brand-color ;
 
  
 }
