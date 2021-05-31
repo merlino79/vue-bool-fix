@@ -8,6 +8,8 @@
     <Main v-if="results.movie.length > 0" type="movie" :list="results.movie" />
     <Main v-if="results.tv.length > 0" type="tv" :list="results.tv" />
 
+    <Card />
+
 
   </div>
 </template>
@@ -16,12 +18,14 @@
 import axios from 'axios';
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
+import Card from './components/Card.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
     Main,
+    Card,
   },
 
   data(){
