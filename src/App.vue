@@ -5,8 +5,8 @@
     @startSearch="startSearch"
     />
 
-    <Main type="movie"/>
-    <Main type="tv"/>
+    <Main v-if="results.movie.length > 0" type="movie" :list="results.movie" />
+    <Main v-if="results.tv.length > 0" type="tv" :list="results.tv" />
 
 
   </div>
@@ -40,6 +40,8 @@ export default {
 
     startSearch(obj){
       //console.log(obj);
+      this.resetResults();
+
       if(obj.type === 'all'){
         this.getAPI(obj.text, 'movie');
         this.getAPI(obj.text, 'tv');
@@ -47,6 +49,11 @@ export default {
         this.getAPI(obj.text, obj.type)
       }
 
+    },
+
+    resetResults(){
+      this.results.movie = [];
+      this.results.tv = [];
     },
 
     getAPI(query, type){

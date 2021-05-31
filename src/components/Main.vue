@@ -3,7 +3,7 @@
     <h1>
       {{titles[type]}}
     </h1>
-    elenco
+    {{list.length}}
   </main>
 </template>
 
@@ -11,7 +11,8 @@
 export default {
   name: 'Main',
   props:{
-    type: String
+    type: String,
+    list: Array,
 
   },
 

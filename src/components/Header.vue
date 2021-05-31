@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-   @import '../assets/styles/vars.scss';
+  //  @import '../assets/styles/vars.scss';
 header{
   height: 100px;
   background-color:rgb(78, 75, 75) ;
