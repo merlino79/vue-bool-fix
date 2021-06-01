@@ -83,7 +83,7 @@ export default {
 
         // in base al tipo di ricerca salvo il dato nell'array dell'oggetto results 
         this.results[type] = res.data.results;
-        console.log(res.data);
+        //console.log(res.data);
       })
       .catch(err => {
         console.log(err);
@@ -96,6 +96,20 @@ export default {
 
   },
     created(){
+      let type = 'movie'
+      axios.get('https://api.themoviedb.org/3/movie/popular',{
+        params:{
+            api_key: this.apiKey,
+            language: 'it-IT'
+          }
+        })
+        .then(res => {
+           this.results[type] = res.data.results;
+        })
+        .catch(err => {
+          console.log(err);
+
+      })
       
     }
 

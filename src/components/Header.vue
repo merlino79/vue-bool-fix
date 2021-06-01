@@ -10,19 +10,19 @@
      </div>
      <div>
         <button
-        @click="$emit('startSearch',{text:textToSearch, type:'movie'})"
+        @click="sendEmit('movie')"
         class="btn btn-primary ms-3">cerca film</button>
 
      </div>
      <div>
         <button
-        @click="$emit('startSearch',{text:textToSearch, type:'tv'})"
+        @click="sendEmit('tv')"
         class="btn btn-primary ms-3">cerca serie</button>
 
      </div>
      <div>
         <button
-        @click="$emit('startSearch',{text:textToSearch, type:'all'})"
+        @click="sendEmit('all')"
         class="btn btn-primary ms-3">cerca tutto</button>
 
      </div>
@@ -42,7 +42,13 @@ export default {
       textToSearch: ''
     }
 
-  }
+  },
+  methods:{
+    sendEmit(type){
+      this.$emit('startSearch',{text:this.textToSearch, type:type})
+
+    }
+  },
 
 }
 </script>
