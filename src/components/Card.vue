@@ -1,9 +1,9 @@
 <template>
-  <div class="p-3 ">
+  <div class="p-3 col-md-6 col-lg-4 col-md-3 ">
      <div class="flip-card">
       <div class="flip-card-inner">
        <div class="flip-card-front">
-           <img :src="imageURL+card.poster_path" :alt="card.title || card.name" >
+           <img class=" " :src="imageURL+card.poster_path" :alt="card.title || card.name" >
          </div>
     <div class="flip-card-back">
      <p class="mt-3 ">
@@ -18,6 +18,26 @@
        <strong>Voto:</strong>
        {{card.vote_average}}
      </p>
+     <div class="stars">
+       <div class="empty">
+                <div class="inner">
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+        </div>
+        <div class="solid" style="width: 106px;">
+                <div class="inner">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+        </div>
+     </div>
      <p class="">
        <strong>lingua: </strong>
       
@@ -132,6 +152,21 @@ export default {
   transform: rotateY(180deg);
   .color{
     color: rgb(248, 196, 176);
+  }
+
+  //star position
+
+  .stars{
+   position: relative;
+   .empty, .solid{
+     position: absolute;
+     top: -17px;
+     left: 68px;
+     overflow: hidden;
+   }
+   .inner{
+     width: 200px;
+   }
   }
 }
 
