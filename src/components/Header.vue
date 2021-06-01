@@ -10,7 +10,7 @@
        </div>
       
      </div>
-     
+     <!-- testo da cercare -->
      <div class="flex-grow-1  ">
        <input
        v-model.trim= "textToSearch"
@@ -18,6 +18,8 @@
        class="form-control "
         type="text">
      </div>
+     <!-- evento -->
+     <!-- emit invio due parametri: evento e ricerva film o serie -->
      <div>
         <button
         @click="sendEmit('movie')"

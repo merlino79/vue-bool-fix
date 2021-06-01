@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- emit header  con funzione startSearch-->
+    <!-- emit header  con funzione startSearch [all'evento invovo la ricerca] -->
     <Header 
     @startSearch="startSearch"
     />
@@ -35,6 +35,7 @@ export default {
 
   data(){
     return{
+      //dati generali api
         apiUrl: 'https://api.themoviedb.org/3/search/',
         apiKey: '1b3eb153fce73eb6b953f7d515b2dc1d',
         //nel mio oggetto memorizzo le due ricerche..
@@ -62,7 +63,8 @@ export default {
     },
 
     resetResults(){
-      //memorizzo le ricerche in un array
+      //resetto il mio array 
+      //memorizzo le ricerche in un array -- sono le due chiamate
       this.results.movie = [];
       this.results.tv = [];
     },
