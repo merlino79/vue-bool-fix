@@ -14,10 +14,12 @@
        <strong>Titolo Originale:</strong>
        {{card.original_title || card.original_name}}
      </p>
-     <p class="">
-       <strong>Voto:</strong>
-       {{card.vote_average}}
-     </p>
+
+    <div>
+
+       
+      
+ 
      <div class="stars">
        <div class="empty">
                 <div class="inner">
@@ -28,7 +30,7 @@
                   <i class="far fa-star"></i>
                 </div>
         </div>
-        <div class="solid" style="width: 106px;">
+        <div class="solid" :style="`width:${6.7*card.vote_average}px`" >
                 <div class="inner">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -38,6 +40,8 @@
                 </div>
         </div>
      </div>
+    </div>
+      
      <p class="">
        <strong>lingua: </strong>
       
@@ -134,6 +138,7 @@ export default {
   backface-visibility: hidden;
    background-color: #202020;
   border: 1px solid rgb(176, 172, 172);
+  cursor: pointer;
 }
 
 /* Style the front side (fallback if image is missing) */
@@ -153,6 +158,10 @@ export default {
   .color{
     color: rgb(248, 196, 176);
   }
+  .inner[data-v-54cdc180] {
+    width: 68px;
+    color: rgb(233, 233, 178);
+}
 
   //star position
 
@@ -160,12 +169,12 @@ export default {
    position: relative;
    .empty, .solid{
      position: absolute;
-     top: -17px;
-     left: 68px;
+     top: -18px;
+     left: 136px;
      overflow: hidden;
    }
    .inner{
-     width: 200px;
+     width: 68px;
    }
   }
 }

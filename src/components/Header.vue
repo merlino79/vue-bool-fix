@@ -1,6 +1,16 @@
 <template>
   <header>
+    
+       
+    
    <div class="container d-flex pt-4">
+     <div class="logo">
+       <div class="txt">
+          bool-fix
+       </div>
+      
+     </div>
+     
      <div class="flex-grow-1  ">
        <input
        v-model.trim= "textToSearch"
@@ -58,6 +68,13 @@ export default {
 header{
   height: 100px;
   background-color:$brand-color ;
+  .logo{
+    width: 100px;
+    .txt{
+      color: red;
+    }
+
+  }
 
  
 }
