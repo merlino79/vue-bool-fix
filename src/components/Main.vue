@@ -1,15 +1,21 @@
 <template>
   <main class="container">
-    <h1>
+    <div class="d">
+       <!-- <h1>
       {{titles[type]}}
-    </h1>
+    </h1> -->
   
-   
-      <Card 
+      <div class="d-flex flex-wrap   ">
+         <Card 
       v-for="card in list"
       :key="card.id"
       :card="card"
       />
+      </div>
+
+    </div>
+   
+     
    
   </main>
   

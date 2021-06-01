@@ -1,14 +1,38 @@
 <template>
-  <div>
+  <div class="p-3 ">
      <div class="flip-card">
       <div class="flip-card-inner">
        <div class="flip-card-front">
-           <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+           <img :src="imageURL+card.poster_path" :alt="card.title || card.name" >
          </div>
     <div class="flip-card-back">
-      <h1>John Doe</h1>
-      <p>Architect & Engineer</p>
-      <p>We love that guy</p>
+     <p class="mt-3 ">
+       <strong>Titolo:</strong>
+       {{card.title || card.name}}
+     </p>
+     <p class="">
+       <strong>Titolo Originale:</strong>
+       {{card.original_title || card.original_name}}
+     </p>
+     <p class="">
+       <strong>Voto:</strong>
+       {{card.vote_average}}
+     </p>
+     <p class="">
+       <strong>lingua: </strong>
+      
+       <img  class="flag"
+       v-if="flags.includes(card.original_language)" 
+       :src="require(`@/assets/img/${card.original_language}.png`)" :alt="card.original_language">
+       <span v-else>
+          {{card.original_language}}
+       </span>
+     </p>
+      <p >
+       <strong class="color">Recensione: </strong>
+       {{card.overview}}
+     </p>
+
     </div>
   </div>
 </div> 
@@ -41,7 +65,8 @@ export default {
   //arrey
   data(){
     return{
-      flags:['it','en']
+      flags:['it','en'],
+      imageURL: 'https://image.tmdb.org/t/p/w342'
     }
   },
   props:{
@@ -52,11 +77,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.flag{
+  width: 30px;
+}
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
+  width: 342px;
+  height: 513px;
+  // border: 1px solid #d12525;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -68,6 +96,8 @@ export default {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  font-size: 0.75rem;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -82,19 +112,27 @@ export default {
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+   background-color: #202020;
+  border: 1px solid rgb(176, 172, 172);
 }
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  img{
+    width: 100%;
+  }
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: rgb(64, 65, 66);
   color: white;
   transform: rotateY(180deg);
+  .color{
+    color: rgb(248, 196, 176);
+  }
 }
 
 

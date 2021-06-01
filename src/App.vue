@@ -97,7 +97,7 @@ export default {
   },
     created(){
       let type = 'movie'
-      axios.get('https://api.themoviedb.org/3/movie/popular',{
+      axios.get('https://api.themoviedb.org/3/search/movie?api_key=b29024d524a40cb95e8ebc16787d55cf&query=arsenè&language= it-IT',{
         params:{
             api_key: this.apiKey,
             language: 'it-IT'
